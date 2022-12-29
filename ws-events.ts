@@ -13,6 +13,7 @@ export type ServerConnect = Connect;
 
 interface Disconnect {
   kind: "disconnect";
+  username: string;
   reason: string;
 }
 export type ServerDisconnect = Disconnect;
