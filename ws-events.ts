@@ -8,7 +8,6 @@ interface Connect {
   username: string;
   team: 0 | 1;
 }
-// Removed `username` from `Connect`
 export type ClientConnect = Omit<Connect, "username">;
 export type ServerConnect = Connect;
 
@@ -16,24 +15,18 @@ interface Disconnect {
   kind: "disconnect";
   reason: string;
 }
-export type ClientDisconnect = Disconnect;
 export type ServerDisconnect = Disconnect;
 
-interface ChangeTeams {
-  kind: "change-teams";
-  username: string;
-  team: 0 | 1;
+interface ChangeTeam {
+  kind: "change-team";
 }
-// Removed `username` and `team` from `ChangeTeams`
-export type ClientChangeTeams = Omit<ChangeTeams, "username" | "team">;
-export type ServerChangeTeams = ChangeTeams;
+export type ClientChangeTeam = ChangeTeam;
+export type ServerChangeTeam = ChangeTeam;
 
 interface RingTeam {
   kind: "ring-team";
-  team: 0 | 1;
 }
-// Removed `team` from `RingTeam`
-export type ClientRingTeam = Omit<RingTeam, "team">;
+export type ClientRingTeam = RingTeam;
 export type ServerRingTeam = RingTeam;
 
 /**
@@ -49,15 +42,13 @@ export interface ServerGameOver {
 }
 
 export type ClientEvent =
-  | ClientConnect
-  | ClientDisconnect
-  | ClientChangeTeams
+  | ClientChangeTeam
   | ClientRingTeam;
 
 export type ServerEvent =
   | ServerConnect
   | ServerDisconnect
-  | ServerChangeTeams
+  | ServerChangeTeam
   | ServerRingTeam
   | ServerGameStart
   | ServerGameOver;
