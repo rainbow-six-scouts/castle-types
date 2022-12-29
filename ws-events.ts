@@ -19,8 +19,9 @@ export type ServerDisconnect = Disconnect;
 
 interface ChangeTeam {
   kind: "change-team";
+  username: string;
 }
-export type ClientChangeTeam = ChangeTeam;
+export type ClientChangeTeam = Omit<ChangeTeam, "username">;
 export type ServerChangeTeam = ChangeTeam;
 
 interface RingTeam {
