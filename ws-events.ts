@@ -47,3 +47,17 @@ export interface ServerGameStart {
 export interface ServerGameOver {
   kind: "game-over";
 }
+
+export type ClientEvent =
+  | ClientConnect
+  | ClientDisconnect
+  | ClientChangeTeams
+  | ClientRingTeam;
+
+export type ServerEvent =
+  | ServerConnect
+  | ServerDisconnect
+  | ServerChangeTeams
+  | ServerRingTeam
+  | ServerGameStart
+  | ServerGameOver;
